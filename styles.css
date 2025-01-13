@@ -22,6 +22,7 @@
 }
 #screen {
     margin-bottom: 20px;
+    
 }
 .screen {
     display: flex;
@@ -33,20 +34,25 @@
 .screen .input {
     height: 40px;
     align-items: flex-end;
-    padding-right: 10px;
+    margin: 0 10px;
+    margin-left: 10px;
     color: white;
     font-weight: 600;
     font-size: 16px;
+    overflow: hidden;
+     
 }
 .screen .output {
     height: 50px;
     align-items: flex-end;
-    padding-right: 10px;
+    margin: 0 10px;
     color: white;
     font-weight: 600;
     font-size: 20px;
+    overflow: hidden;
 }
 
+  
 .numpad {
     display: flex;
     flex-direction: row;
