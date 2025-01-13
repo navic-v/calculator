@@ -2,6 +2,11 @@ const calc = document.querySelector('.calculator');
 const screeningInput = document.querySelector('.input');
 const screeningOutput = document.querySelector('.output');
 
+const addOperation = (a, b) => a + b;
+const minusOperation = (a, b) => a - b;
+const multiplyOperation = (a, b) => a * b;
+const divideOperation = (a, b) => a / b;
+
 calc.addEventListener('click', (event) => {
     event.preventDefault();
 
