@@ -11,6 +11,10 @@ let firstNumber;
 let secondNumber;
 let operator;
 
+const operate = (operator, firstNumber, secondNumber) => {
+    addOperation(firstNumber, secondNumber);
+}
+
 calc.addEventListener('click', (event) => {
     event.preventDefault();
 
