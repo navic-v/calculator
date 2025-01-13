@@ -1,0 +1,43 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+    width: 215px;
+    height: 370px;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+}
+.screen-input {
+    height: 50px;
+    background-color: blue;
+}
+.screen-output {
+    height: 50px;
+    background-color: green;
+}
+
+.numpad {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 16px;
+}
