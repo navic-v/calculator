@@ -16,8 +16,8 @@
 .calculator {
     background-color: rgb(50, 50, 50);
     width: 255px;
-    height: 445px;
-    padding: 30px 20px;
+    height: 450px;
+    padding: 40px 20px;
     border-radius: 20px;
 }
 #screen {
@@ -65,4 +65,15 @@ button {
 }
 button:active {
     background-color: rgb(128, 128, 128);
+}
+button.operation:active {
+    background-color: rgb(255, 149, 0);
+}
+button#clear {
+    background-color: white;
+    color: black;
+    opacity: 0.8;
+}
+button#clear:active {
+    opacity: 1;
 }
