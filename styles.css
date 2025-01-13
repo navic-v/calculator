@@ -10,16 +10,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: goldenrod;
-    width: 215px;
-    height: 370px;
+    height: 100vh;
 }
 
+.calculator {
+    background-color: rgb(50, 50, 50);
+    width: 255px;
+    height: 445px;
+    padding: 30px 20px;
+    border-radius: 20px;
+}
+#screen {
+    margin-bottom: 20px;
+}
 .screen {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: gray;
+    background-color: rgb(88, 88, 88);
+    
 }
 .screen .input {
     height: 50px;
@@ -51,4 +60,8 @@ button {
     border-radius: 50%;
     border: none;
     font-size: 16px;
+    background-color: rgb(78, 78, 78);
+}
+button:active {
+    background-color: rgb(128, 128, 128);
 }
