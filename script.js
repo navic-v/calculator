@@ -7,6 +7,10 @@ const minusOperation = (a, b) => a - b;
 const multiplyOperation = (a, b) => a * b;
 const divideOperation = (a, b) => a / b;
 
+let firstNumber;
+let secondNumber;
+let operator;
+
 calc.addEventListener('click', (event) => {
     event.preventDefault();
 
