@@ -1,4 +1,5 @@
 *, *::before, *::after {
+    font-family: sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,7 +10,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: aqua;
+    background-color: goldenrod;
     width: 215px;
     height: 370px;
 }
@@ -17,14 +18,24 @@
 .screen {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    background-color: gray;
 }
-.screen-input {
+.screen .input {
     height: 50px;
-    background-color: blue;
+    align-items: flex-end;
+    padding-right: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
 }
-.screen-output {
+.screen .output {
     height: 50px;
-    background-color: green;
+    align-items: flex-end;
+    padding-right: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .numpad {
