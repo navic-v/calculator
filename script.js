@@ -11,5 +11,6 @@ calc.addEventListener('click', (event) => {
     }
     if (target.id === "clear") {
         screeningInput.innerText = '';
+        screeningOutput.innerText = 0;
     }
 })
