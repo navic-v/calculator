@@ -31,9 +31,9 @@
     
 }
 .screen .input {
-    height: 50px;
+    height: 40px;
     align-items: flex-end;
-    padding-right: 5px;
+    padding-right: 10px;
     color: white;
     font-weight: 600;
     font-size: 16px;
@@ -41,10 +41,10 @@
 .screen .output {
     height: 50px;
     align-items: flex-end;
-    padding-right: 5px;
+    padding-right: 10px;
     color: white;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .numpad {
@@ -61,6 +61,7 @@ button {
     border: none;
     font-size: 16px;
     background-color: rgb(78, 78, 78);
+    color: white;
 }
 button:active {
     background-color: rgb(128, 128, 128);
