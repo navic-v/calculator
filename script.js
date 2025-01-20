@@ -10,6 +10,7 @@ const divideOperation = (a, b) => a / b;
 let firstNumber;
 let secondNumber;
 let operator;
+let input = '';
 
 const operate = (operator, firstNumber, secondNumber) => {
     if (operator === 'add') {
@@ -27,27 +28,24 @@ const operate = (operator, firstNumber, secondNumber) => {
 calc.addEventListener('click', (event) => {
     event.preventDefault();
 
-    // Add variable to store the number input
-    let input = [];
-
     let target = event.target;
-    // if (target.tagName == "BUTTON") {
-    //     if (target.className == "operation") {
-    //         input.push(screeningInput.innerText);
-    //         console.log(input);
-    //     }
-    //     screeningInput.innerText += `${target.innerText} `;
-    // }
 
     if (target.className === "digit") {
-        screeningInput.innerText += target.innerText;
+        input += target.innerText;
+        screeningInput.innerText = input;
     }
 
     if (target.className === "operation") {
-        firstNumber = Number(screeningInput.innerText);
         operator = target.id;
+        if (!firstNumber) {
+            firstNumber = Number(screeningInput.innerText);
+        } else {
+            secondNumber = Number(screeningInput.innerText);
+            operate(operator, firstNumber, secondNumber);
+        }
+
         screeningInput.innerText = '';
-        console.log(firstNumber, operator);
+        console.log(firstNumber, operator, secondNumber);
     }
 
     if (target.id === "subtotal") {
