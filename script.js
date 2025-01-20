@@ -47,10 +47,12 @@ calc.addEventListener('click', (event) => {
         firstNumber = Number(screeningInput.innerText);
         operator = target.id;
         screeningInput.innerText = '';
+        console.log(firstNumber, operator);
     }
 
     if (target.id === "subtotal") {
-        secondNumber = screeningInput.innerText;
+        secondNumber = Number(screeningInput.innerText);
+        console.log(operator, firstNumber, secondNumber);
         screeningInput.innerText = operate(operator, firstNumber, secondNumber);
     }
 
