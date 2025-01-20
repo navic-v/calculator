@@ -12,7 +12,16 @@ let secondNumber;
 let operator;
 
 const operate = (operator, firstNumber, secondNumber) => {
-    addOperation(firstNumber, secondNumber);
+    if (operator === 'add') {
+        return addOperation(firstNumber, secondNumber);
+    } else if (operator === 'minus') {
+        return minusOperation(firstNumber, secondNumber);
+    } else if (operator === 'multiply') {
+        return multiplyOperation(firstNumber, secondNumber);
+    } else if (operator === 'divide') {
+        return divideOperation(firstNumber, secondNumber);
+    }
+    
 }
 
 calc.addEventListener('click', (event) => {
@@ -22,13 +31,29 @@ calc.addEventListener('click', (event) => {
     let input = [];
 
     let target = event.target;
-    if (target.tagName == "BUTTON") {
-        if (target.className == "operation") {
-            input.push(screeningInput.innerText);
-            console.log(input);
-        }
-        screeningInput.innerText += `${target.innerText} `;
+    // if (target.tagName == "BUTTON") {
+    //     if (target.className == "operation") {
+    //         input.push(screeningInput.innerText);
+    //         console.log(input);
+    //     }
+    //     screeningInput.innerText += `${target.innerText} `;
+    // }
+
+    if (target.className === "digit") {
+        screeningInput.innerText += target.innerText;
     }
+
+    if (target.className === "operation") {
+        firstNumber = Number(screeningInput.innerText);
+        operator = target.id;
+        screeningInput.innerText = '';
+    }
+
+    if (target.id === "subtotal") {
+        secondNumber = screeningInput.innerText;
+        screeningInput.innerText = operate(operator, firstNumber, secondNumber);
+    }
+
     if (target.id === "clear") {
         input = [];
         screeningInput.innerText = '';
