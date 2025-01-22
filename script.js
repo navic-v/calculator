@@ -47,7 +47,12 @@ calc.addEventListener('click', (event) => {
             screeningInput.innerText = digits;
             isDecimal = true;
         }
-        
+    }
+    if (target.className === "del") {
+        let temp = digits.split('');
+        temp.pop();
+        digits = temp.join('');
+        screeningInput.innerText = digits;
     }
 
     // This logic will happen when user click the operation btn
