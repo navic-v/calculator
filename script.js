@@ -7,9 +7,9 @@ const minusOperation = (a, b) => a - b;
 const multiplyOperation = (a, b) => a * b;
 const divideOperation = (a, b) => a / b;
 
-let firstNumber;
-let secondNumber;
-let operator;
+let firstNumber = null;
+let secondNumber = null;
+let operator = '';
 let digits = '';
 let result = 0;
 
@@ -64,8 +64,6 @@ calc.addEventListener('click', (event) => {
             // Reset the 'digits' variable to let user input next number
             digits = '';
         }
-
-        // screeningInput.innerText = '';
         console.log(firstNumber, operator, secondNumber);
     }
 
@@ -77,7 +75,11 @@ calc.addEventListener('click', (event) => {
 
     // When user click the clear btn, reset all things to the beginning
     if (target.id === "clear") {
+        firstNumber = null;
+        secondNumber = null;
+        operator = '';
         digits = '';
+        result = 0;
         screeningInput.innerText = digits;
         screeningOutput.innerText = 0;
     }
