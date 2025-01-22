@@ -12,6 +12,7 @@ let secondNumber = null;
 let operator = null;
 let digits = '';
 let result = 0;
+let isDecimal = false;
 
 const operate = (operator, firstNumber, secondNumber) => {
     if (secondNumber == 0 && operator === 'divide') {
@@ -40,6 +41,14 @@ calc.addEventListener('click', (event) => {
         digits += target.innerText;
         screeningInput.innerText = digits;
     }
+    if (target.className === "decimal") {
+        if (!isDecimal) {
+            digits += target.innerText;
+            screeningInput.innerText = digits;
+            isDecimal = true;
+        }
+        
+    }
 
     // This logic will happen when user click the operation btn
     // To make the operation happens, we need 2 numbers and the operator
@@ -53,6 +62,7 @@ calc.addEventListener('click', (event) => {
             operator = target.id;
             // Reset the 'digits' variable to let user input next number
             digits = '';
+            isDecimal = false;
         } else {
             // Store the number in 'digits' variable as the secondNumber.
             secondNumber = Number(digits);
@@ -66,18 +76,21 @@ calc.addEventListener('click', (event) => {
             firstNumber = result;
             // Reset the 'digits' variable to let user input next number
             digits = '';
+            isDecimal = false;
         }
         console.log(firstNumber, operator, secondNumber);
     }
 
     if (target.id === "subtotal") {
+        // Store the number in 'digits' variable as the secondNumber.
+        secondNumber = Number(digits);
+
         // Pressing '=' before entering all numbers or an operator would cause problem
-        if (!firstNumber || !secondNumber || !operator) {
+        if (!firstNumber || !secondNumber || secondNumber == '' || !operator) {
             screeningInput.innerText = 'ERROR!';
             return;
         }
-        // Store the number in 'digits' variable as the secondNumber.
-        secondNumber = Number(digits);
+        
         // Make the operation between firstNumber and secondNumber using stored operation
         result = operate(operator, firstNumber, secondNumber);
         // The result wil be displayed on screen
@@ -88,6 +101,7 @@ calc.addEventListener('click', (event) => {
         digits = '';
         operator = null;
         secondNumber = null;
+        isDecimal = false;
     }
 
     // When user click the clear btn, reset all things to the beginning
@@ -97,6 +111,7 @@ calc.addEventListener('click', (event) => {
         operator = '';
         digits = '';
         result = 0;
+        isDecimal = false;
         screeningInput.innerText = digits;
         screeningOutput.innerText = 0;
     }
