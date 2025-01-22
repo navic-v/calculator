@@ -14,6 +14,9 @@ let digits = '';
 let result = 0;
 
 const operate = (operator, firstNumber, secondNumber) => {
+    if (secondNumber == 0) {
+        return 'ERROR! Could not divide to 0!';
+    }
     if (operator === 'add') {
         return addOperation(firstNumber, secondNumber);
     } else if (operator === 'minus') {
@@ -68,9 +71,14 @@ calc.addEventListener('click', (event) => {
     }
 
     if (target.id === "subtotal") {
-        secondNumber = Number(screeningInput.innerText);
-        console.log(operator, firstNumber, secondNumber);
-        screeningInput.innerText = operate(operator, firstNumber, secondNumber);
+        // Store the number in 'digits' variable as the secondNumber.
+        secondNumber = Number(digits);
+        // Make the operation between firstNumber and secondNumber using stored operation
+        result = operate(operator, firstNumber, secondNumber);
+        // The result wil be displayed on screen
+        screeningInput.innerText = result;
+        // Reset the 'digits' variable to let user input next number
+        digits = '';
     }
 
     // When user click the clear btn, reset all things to the beginning
