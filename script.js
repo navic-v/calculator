@@ -7,11 +7,16 @@ const minusOperation = (a, b) => a - b;
 const multiplyOperation = (a, b) => a * b;
 const divideOperation = (a, b) => a / b;
 
-let firstNumber;
-let secondNumber;
-let operator;
+let firstNumber = null;
+let secondNumber = null;
+let operator = null;
+let digits = '';
+let result = 0;
 
 const operate = (operator, firstNumber, secondNumber) => {
+    if (secondNumber == 0 && operator === 'divide') {
+        return 'ERROR! Could not divide to 0!';
+    }
     if (operator === 'add') {
         return addOperation(firstNumber, secondNumber);
     } else if (operator === 'minus') {
@@ -27,38 +32,73 @@ const operate = (operator, firstNumber, secondNumber) => {
 calc.addEventListener('click', (event) => {
     event.preventDefault();
 
-    // Add variable to store the number input
-    let input = [];
-
     let target = event.target;
-    // if (target.tagName == "BUTTON") {
-    //     if (target.className == "operation") {
-    //         input.push(screeningInput.innerText);
-    //         console.log(input);
-    //     }
-    //     screeningInput.innerText += `${target.innerText} `;
-    // }
 
+    // When user click on digit btn, make a variable (digits) to connect these value (in string)
+    // together, then display to the screen
     if (target.className === "digit") {
-        screeningInput.innerText += target.innerText;
+        digits += target.innerText;
+        screeningInput.innerText = digits;
     }
 
+    // This logic will happen when user click the operation btn
+    // To make the operation happens, we need 2 numbers and the operator
     if (target.className === "operation") {
-        firstNumber = Number(screeningInput.innerText);
-        operator = target.id;
-        screeningInput.innerText = '';
-        console.log(firstNumber, operator);
+
+        if (!firstNumber) {
+            // In the beginning, there is no numbers out there,
+            // so we store the value of 'digits' variable in firstNumber variable
+            firstNumber = Number(digits);
+            // Store the current operator
+            operator = target.id;
+            // Reset the 'digits' variable to let user input next number
+            digits = '';
+        } else {
+            // Store the number in 'digits' variable as the secondNumber.
+            secondNumber = Number(digits);
+            // Make the operation between firstNumber and secondNumber using stored operation
+            result = operate(operator, firstNumber, secondNumber);
+            // The result wil be displayed on screen
+            screeningInput.innerText = result;
+            // Store the current operator for the next operation
+            operator = target.id;
+            // The result will also become firstNumber for the next operation
+            firstNumber = result;
+            // Reset the 'digits' variable to let user input next number
+            digits = '';
+        }
+        console.log(firstNumber, operator, secondNumber);
     }
 
     if (target.id === "subtotal") {
-        secondNumber = Number(screeningInput.innerText);
-        console.log(operator, firstNumber, secondNumber);
-        screeningInput.innerText = operate(operator, firstNumber, secondNumber);
+        // Pressing '=' before entering all numbers or an operator would cause problem
+        if (!firstNumber || !secondNumber || !operator) {
+            screeningInput.innerText = 'ERROR!';
+            return;
+        }
+        // Store the number in 'digits' variable as the secondNumber.
+        secondNumber = Number(digits);
+        // Make the operation between firstNumber and secondNumber using stored operation
+        result = operate(operator, firstNumber, secondNumber);
+        // The result wil be displayed on screen
+        screeningInput.innerText = result;
+        // The result will also become firstNumber for the next operation
+        firstNumber = result;
+        // Reset the 'digits' variable to let user input next number
+        digits = '';
+        operator = null;
+        secondNumber = null;
     }
 
+    // When user click the clear btn, reset all things to the beginning
     if (target.id === "clear") {
-        input = [];
-        screeningInput.innerText = '';
+        firstNumber = null;
+        secondNumber = null;
+        operator = '';
+        digits = '';
+        result = 0;
+        screeningInput.innerText = digits;
         screeningOutput.innerText = 0;
     }
 })
+
