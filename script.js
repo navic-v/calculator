@@ -10,7 +10,7 @@ const divideOperation = (a, b) => a / b;
 let firstNumber;
 let secondNumber;
 let operator;
-let input = '';
+let digits = '';
 
 const operate = (operator, firstNumber, secondNumber) => {
     if (operator === 'add') {
@@ -30,9 +30,11 @@ calc.addEventListener('click', (event) => {
 
     let target = event.target;
 
+    // When user click on digit btn, make a variable (digits) to connect these value (in string)
+    // together, then display to the screen
     if (target.className === "digit") {
-        input += target.innerText;
-        screeningInput.innerText = input;
+        digits += target.innerText;
+        screeningInput.innerText = digits;
     }
 
     if (target.className === "operation") {
@@ -54,9 +56,11 @@ calc.addEventListener('click', (event) => {
         screeningInput.innerText = operate(operator, firstNumber, secondNumber);
     }
 
+    // When user click the clear btn, reset all things to the beginning
     if (target.id === "clear") {
-        input = [];
-        screeningInput.innerText = '';
+        digits = '';
+        screeningInput.innerText = digits;
         screeningOutput.innerText = 0;
     }
 })
+
