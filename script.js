@@ -11,6 +11,7 @@ let firstNumber;
 let secondNumber;
 let operator;
 let digits = '';
+let result = 0;
 
 const operate = (operator, firstNumber, secondNumber) => {
     if (operator === 'add') {
@@ -37,16 +38,34 @@ calc.addEventListener('click', (event) => {
         screeningInput.innerText = digits;
     }
 
+    // This logic will happen when user click the operation btn
+    // To make the operation happens, we need 2 numbers and the operator
     if (target.className === "operation") {
-        operator = target.id;
+
         if (!firstNumber) {
-            firstNumber = Number(screeningInput.innerText);
+            // In the beginning, there is no numbers out there,
+            // so we store the value of 'digits' variable in firstNumber variable
+            firstNumber = Number(digits);
+            // Store the current operator
+            operator = target.id;
+            // Reset the 'digits' variable to let user input next number
+            digits = '';
         } else {
-            secondNumber = Number(screeningInput.innerText);
-            operate(operator, firstNumber, secondNumber);
+            // Store the number in 'digits' variable as the secondNumber.
+            secondNumber = Number(digits);
+            // Make the operation between firstNumber and secondNumber using stored operation
+            result = operate(operator, firstNumber, secondNumber);
+            // The result wil be displayed on screen
+            screeningInput.innerText = result;
+            // Store the current operator for the next operation
+            operator = target.id;
+            // The result will also become firstNumber for the next operation
+            firstNumber = result;
+            // Reset the 'digits' variable to let user input next number
+            digits = '';
         }
 
-        screeningInput.innerText = '';
+        // screeningInput.innerText = '';
         console.log(firstNumber, operator, secondNumber);
     }
 
